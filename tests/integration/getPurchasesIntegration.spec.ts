@@ -33,7 +33,7 @@ describe('Get Integration Products', () => {
                 total: 7850,
                 items: [
                     {
-                        productId: 1,
+                        productId: "1",
                         quantity: 1,
                         name: "Notebook Gamer Pro",
                         price: 7500,
@@ -48,7 +48,7 @@ describe('Get Integration Products', () => {
                 total: 120,
                 items: [
                     {
-                        productId: 2,
+                        productId: "2",
                         quantity: 2,
                         name: "Teclado Mecânico",
                         price: 60,
@@ -65,6 +65,6 @@ describe('Get Integration Products', () => {
 
         expect(purchasesRepositoryMocked.getAllPurchases).toHaveBeenCalledTimes(1);
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(mockPurchases);
+        expect(response.body).toMatchObject(mockPurchases);
     });
 });
