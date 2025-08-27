@@ -13,10 +13,6 @@ import purchasesRoutes from "./routes/purchases-routes"
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-console.log('NODE_ENV:', process.env.NODE_ENV);
-console.log('MONGO_URL:', process.env.MONGO_URL);
-console.log('MONGO_TEST_URL:', process.env.MONGO_TEST_URL);
-
 app.use(express.json());
 app.use(cors());
 app.use(transactionRoutes)
@@ -26,9 +22,7 @@ app.use(purchasesRoutes)
 
 export default app;
 
-const MONGO_URL = process.env.NODE_ENV === 'test' 
-  ? process.env.MONGO_TEST_URL 
-  : process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGO_URL;
 
 
 if (!MONGO_URL) {
@@ -46,4 +40,3 @@ connectToMongo(MONGO_URL)
     console.error("Falha ao iniciar o servidor devido a um erro de conexão com o banco de dados.", err);
     process.exit(1);
   });
-
